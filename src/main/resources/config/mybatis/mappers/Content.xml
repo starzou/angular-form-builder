@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Content">
+    <!-- 通过短链获取要渲染的内容  -->
+    <select id="getUrlToContent" parameterType="String" resultType="map">
+        select * from tb_content where url=#{url} and status=1
+
+    </select>
+    <!-- 通过cid获取要渲染的内容  -->
+    <select id="getIdToContent" parameterType="Long" resultType="map">
+        select cid,type,title,sub_title as subTitle,components,user_name as userName,user_id as userId,status from tb_content where cid=#{cid}
+
+    </select>
+    <select id="getContentConfig" parameterType="String" resultType="map">
+        select * from twf_Content_config where client_id=#{client_id};
+    </select>
+
+    <!--通过店铺查询所有的内容列表-->
+    <select id="queryContent" parameterType="map" resultType="map">
+        select * from tb_content where user_id=#{user_id} and type = #{type} and status !=3
+    </select>
+
+    <!-- 添加内容信息 -->
+    <insert id="insertContentInfo" parameterType="ContentVo">
+        <selectKey resultType="Long" keyProperty="cid">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into tb_content(type,title,sub_title,components,user_name,user_id,status,created)value(#{type},#{title},#{subTitle},#{componentsStr},#{userName},#{userId},#{status},now())
+    </insert>
+    <!-- 更新内容信息 -->
+    <insert id="updateContentInfo" parameterType="ContentVo">
+        update tb_content set title=#{title},sub_title=#{subTitle},components=#{componentsStr},updated=now()  where cid = #{cid}
+    </insert>
+    
+    <update id="updateContentUrlByCid" parameterType="map">
+    	update tb_content set url = #{url},status = #{status} where cid = #{cid}
+    </update>
+
+    <!-- 删除内容信息 -->
+    <update id="deleteContent" parameterType="Long">
+        update tb_content set status = 3 where cid = #{cid}
+    </update>
+
+    <!-- 通过接口名获取配置数据-->
+    <select id="getNameToConfig" parameterType="String" resultType="map">
+        select * from twf_Content_config where interface_name=#{name}
+    </select>
+</mapper>

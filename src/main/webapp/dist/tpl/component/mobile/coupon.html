@@ -1,0 +1,103 @@
+<div ng-switch on="component.type" class="mobile-view">
+    <!--列表式-->
+    <div ng-switch-when="list">
+        <div class="row coupon" ng-repeat="coupon in component.values track by $index">
+            <div ng-class="'coupon-left col-sms-9 pull-left '+getCouponColor(coupon.discountAmount)">
+                <div class="row">
+
+                    <div ng-if="coupon.image" class="row" >
+                        <div class="col-sms-3 store-brand pull-left"><img ng-src="{{coupon.image}}"/></div>
+                        <div class="store-name col-sms-9"><span ng-bind="coupon.displayName"></span></div>
+                        <div class="time-limit col-sms-9 webkit-text-limit-fixed"><span ng-bind-template="有效期：{{coupon.expire}}"></span></div>
+                    </div>
+
+                    <div ng-if="!coupon.image">
+                        <div class="store-name col-sms-12"><span ng-bind="coupon.displayName"></span></div>
+                        <div class="time-limit col-sms-12 webkit-text-limit-fixed-left" style="margin-left: 1.8em;"><span ng-bind-template="有效期：{{coupon.expire}}"></span></div>
+                    </div>
+
+                    <div class="coupon-splitter col-sms-12"></div>
+                    <div class="coupon-price col-sms-7 pull-left">
+                        <span class="currency-sign">￥</span>
+                        <span class="price-number" ng-bind="coupon.discountAmount"></span>
+                    </div>
+                    <div class="coupon-term col-sms-5 pull-right"><span ng-bind-template="满{{coupon.condition}}立减"></span></div>
+                </div>
+            </div>
+            <a ng-href="{{coupon.link}}" onfocus="blur();" class="coupon-right col-sms-3">
+                立即领取 &gt;
+            </a>
+        </div>
+    </div>
+
+    <!--滑动式-->
+    <div ng-switch-when="carousel" ng-init="componentIndex=$index">
+
+        <div class="row carWrapper">
+            <div id="carousel-example-captions-{{componentIndex}}" class="carousel slide col-sms-12" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li ng-repeat="coupon in component.values track by $index" ng-class="$first&&'active'" data-target="#carousel-example-captions-{{componentIndex}}" data-slide-to="{{$index}}" ></li>
+                </ol>
+                <div class="carousel-inner">
+
+                    <div ng-repeat="coupon in component.values track by $index" ng-class="'item '+($first&&'active')">
+                        <div ng-class="'row '+(coupon.image&&'no-pic')+ ' detail-wrapper '+getCouponColor(coupon.discountAmount)">
+                            <h4 class="store-name col-sms-12"><span ng-bind="coupon.displayName"></span></h4>
+                            <div class="coupon-splitter col-sms-12"></div>
+
+                            <div ng-if="coupon.image" class="row all-info-wrapper">
+                                <div class="col-sms-3 store-brand pull-left">
+                                    <img ng-src="{{coupon.image}}"/>
+                                </div>
+                                <div class="ccRightWrapper col-sms-7">
+                                    <div class="row">
+                                        <div class="col-sms-6 pull-left">
+                                            <span class="currencySign">￥</span>
+                                            <span class="mNumber" ng-bind="coupon.discountAmount"></span>
+                                        </div>
+                                        <div class="cCouponTerm pull-left col-sms-6"><span ng-bind-template=" 满{{coupon.condition}}立减"></span></div>
+                                        <br>
+
+                                        <div class="col-sms-12 timeLimit webkit-text-limit-fixed-36">
+                                            <span ng-bind-template="有效期：{{coupon.expire}}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sms-2"></div>
+                            </div>
+
+                            <div ng-if="!coupon.image" class="ccRightWrapper col-sms-12 clearFix">
+                                <div class="row price-wrapper">
+                                    <div class="col-sms-2"></div>
+                                    <div class="col-sms-4 pull-left">
+                                        <span class="currencySign">￥</span>
+                                        <span class="mNumber" ng-bind="coupon.discountAmount"></span>
+                                    </div>
+                                    <div class="cCouponTerm col-sms-4"><span ng-bind-template=" 满{{coupon.condition}}立减"></span></div>
+                                    <br>
+
+                                    <div class="col-sms-2"></div>
+                                </div>
+                                <div class="col-sms-12 timeLimit webkit-text-limit-fixed-36">
+                                    <span ng-bind-template="有效期：{{coupon.expire}}"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <a ng-href="{{coupon.link}}" onfocus="blur();" class="getCouponLink" target="_blank">
+                            立即领取 &gt;
+                        </a>
+                    </div>
+                </div>
+
+                <script>
+                    $('.carousel').on("swipeleft", function(e){
+                       $(this).carousel('next').carousel('pause');
+                    });
+                    $('.carousel').on('swiperight', function(e){
+                        $(this).carousel('prev').carousel('pause');
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

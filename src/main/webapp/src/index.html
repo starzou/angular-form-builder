@@ -1,0 +1,75 @@
+<!--
+ Created by kui.liu on 2014/05/29 14:34.
+-->
+<!DOCTYPE html>
+<html ng-app="contentApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>内容管理</title>
+    <link href="src/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="src/css/daterangepicker-bs3.css" rel="stylesheet" />
+    <link href="src/css/app.css" rel="stylesheet" />
+
+    <script>
+        //  设置资源文件目录，必需!!
+        window.ResourceDir = "/src/";
+    </script>
+    <script src="src/js/file-loader.js"></script>
+
+    <base href="/channel-content/">
+
+</head>
+<body class="ng-cloak" ng-controller="AppCtrl">
+<div class="header">
+    <img ng-src="{{fileRoot}}images/header-bg-tmp-left.jpg"/>
+    <img style="float: right;" ng-src="{{fileRoot}}/images/header-bg-tmp-right.jpg"/>
+</div>
+<div class="mainContain">
+    <div class="sidebarLeft">
+        <ul class="allOptions">
+            <li class="aoForm"><div class="alIcons formIcon"></div>表单</li>
+            <li class="aoMail"><div class="alIcons mailIcon"></div>邮件</li>
+            <li class="aoMobile selectedOption"><div class="alIcons mobileIcon"></div>移动端</li>
+        </ul>
+    </div>
+
+    <div ng-view></div>
+</div>
+</body>
+
+<script>
+
+    FileLoader.addTag('script', {src: 'lib/jquery/jquery-1.11.1.min.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/jquery-ui/js/jquery-ui-1.10.4.min.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/jquery/jquery.nicescroll.min.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/angular/angular.min.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/angular/angular-locale_zh-cn.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/angular/angular-route.min.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/angular/angular-resource.min.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/angular/angular-cookies.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/angular/angular-file-upload.js'}, true);
+    FileLoader.addTag('script', {src: 'locale_zh-cn.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/bootstrap/bootstrap.min.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/bootstrap/moment.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/bootstrap/daterangepicker.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/qrcode/jquery.qrcode.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/qrcode/qrcode.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/ZeroClipboard/ZeroClipboard.min.js'}, true);
+    FileLoader.addTag('script', {src: 'yunat-pop.js'}, true);
+    FileLoader.addTag('script', {src: 'components.js'}, true);
+    FileLoader.addTag('script', {src: 'utils.js'}, true);
+    FileLoader.addTag('script', {src: 'directives.js'}, true);
+    FileLoader.addTag('script', {src: 'services.js'}, true);
+    FileLoader.addTag('script', {src: 'app.js'}, true);
+    FileLoader.addTag('script', {src: 'controllers/BaseComponentCtrl.js'}, true);
+    FileLoader.addTag('script', {src: 'controllers/ContentEditorCtrl.js'}, true);
+    FileLoader.addTag('script', {src: 'controllers/ContentListCtrl.js'}, true);
+    FileLoader.addTag('script', {src: 'controllers/PublishCtrl.js'}, true);
+    FileLoader.addTag('script', {src: 'controllers/MobileComPreviewCtrl.js'}, true);
+    FileLoader.addTag('script', {src: 'controllers/MobileEditorCtrl.js'}, true);
+    FileLoader.addTag('script', {src: 'controllers/components/CouponEditorCtrl.js'}, true);
+    FileLoader.addTag('script', {src: 'controllers/components/CouponPreviewCtrl.js'}, true);
+
+</script>
+</html>

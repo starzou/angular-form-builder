@@ -1,0 +1,280 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.yunat</groupId>
+		<artifactId>yunat-parent</artifactId>
+		<version>1.0.3</version>
+	</parent>
+
+	<groupId>com.huaat.channel</groupId>
+	<artifactId>channel-content</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+
+    <properties>
+        <spring.version>3.2.8.RELEASE</spring.version>
+        <webSourceDirectory>src/main/webapp</webSourceDirectory>
+        <minimizedResource>true</minimizedResource>
+    </properties>
+
+	<dependencies>
+
+        <!-- springmvc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+
+		<!-- mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.21</version>
+		</dependency>
+
+		<!-- bonecp JAR -->
+		<dependency>
+			<groupId>com.jolbox</groupId>
+			<artifactId>bonecp</artifactId>
+		</dependency>
+
+		<!-- spring 整合JAR -->
+		<dependency>
+			<groupId>com.jolbox</groupId>
+			<artifactId>bonecp-spring</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+		
+		<!-- taobao sdk -->
+        <dependency>
+            <groupId>com.taobao.taobao-sdk</groupId>
+            <artifactId>taobao-sdk-java-auto</artifactId>
+            <version>1397789522808-20140418</version>
+        </dependency>
+        
+        <dependency>
+  	 		<groupId>com.sun.jersey</groupId>
+   			<artifactId>jersey-client</artifactId>
+   			<version>1.9.1</version>
+  		</dependency>
+
+		<!-- servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>com.yunat.base</groupId>
+            <artifactId>yunat-base</artifactId>
+            <version>2.2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yunat.utility</groupId>
+            <artifactId>utility</artifactId>
+            <version>1.0.30</version>
+        </dependency>
+	</dependencies>
+
+	<build>
+		<finalName>channel-content</finalName>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <!--复制静态资源-->
+                        <configuration>
+                            <outputDirectory>${webSourceDirectory}/dist/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${webSourceDirectory}/src/</directory>
+                                    <includes>
+                                        <include>fonts/**</include>
+                                        <include>images/**</include>
+                                        <include>tpl/**</include>
+                                    </includes>
+                                    <!--swf文件复制会出问题-->
+                                    <excludes>
+                                        <exclude>**/*.swf</exclude>
+                                    </excludes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--js/css压缩合并，发布前请本地执行一次，然后注释掉提交，否则线上发布很慢-->
+            <!--<plugin>-->
+                <!--<groupId>ro.isdc.wro4j</groupId>-->
+                <!--<artifactId>wro4j-maven-plugin</artifactId>-->
+                <!--<version>1.7.5</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>wro4j</id>-->
+                        <!--<phase>compile</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--&lt;!&ndash; 是否压缩，minimizedResource &ndash;&gt;-->
+                    <!--<minimize>${minimizedResource}</minimize>-->
+                    <!--&lt;!&ndash; web资源目录，webSourceDirectory这个是自定义变量 &ndash;&gt;-->
+                    <!--<contextFolder>${basedir}/${webSourceDirectory}/</contextFolder>-->
+                    <!--<wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory-->
+                    <!--</wroManagerFactory>-->
+                    <!--&lt;!&ndash; wro4j的配置文件，指定需要合并和压缩的文件 &ndash;&gt;-->
+                    <!--<wroFile>${basedir}/${webSourceDirectory}/WEB-INF/wro.xml</wroFile>-->
+                    <!--&lt;!&ndash; wro4j的配置文件，指定压缩和合并工具的配置 &ndash;&gt;-->
+                    <!--<extraConfigFile>${basedir}/${webSourceDirectory}/WEB-INF/wro.properties</extraConfigFile>-->
+                    <!--&lt;!&ndash; 处理后的css存放目录 &ndash;&gt;-->
+                    <!--<cssDestinationFolder>${basedir}/${webSourceDirectory}/dist/css/</cssDestinationFolder>-->
+                    <!--&lt;!&ndash; 处理后的js存放目录 &ndash;&gt;-->
+                    <!--<jsDestinationFolder>${basedir}/${webSourceDirectory}/dist/js/</jsDestinationFolder>-->
+                    <!--<ignoreMissingResources>false</ignoreMissingResources>-->
+                    <!--<failNever>false</failNever>-->
+                    <!--<failFast>false</failFast>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+</project>

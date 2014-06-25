@@ -1,0 +1,42 @@
+<!--
+ Created by kui.liu on 2014/05/29 14:34.
+-->
+<!DOCTYPE html>
+<html ng-app="contentApp">
+<head>
+    <meta charset="UTF-8">
+    <title>内容管理</title>
+    <link href="dist/css/content.min.css" rel="stylesheet" />
+    <script>
+        //  设置资源文件目录，必需!!
+        window.ResourceDir = "/dist/";
+    </script>
+    <script src="dist/js/file-loader.min.js"></script>
+
+    <base href="/channel-content/">
+
+</head>
+<body class="ng-cloak" ng-controller="AppCtrl">
+<div class="header">
+    <img ng-src="{{fileRoot}}images/header-bg-tmp-left.jpg"/>
+    <img style="float: right;" ng-src="{{fileRoot}}/images/header-bg-tmp-right.jpg"/>
+</div>
+<div class="mainContain">
+    <div class="sidebarLeft">
+        <ul class="allOptions">
+            <li class="aoForm"><div class="alIcons formIcon"></div>表单</li>
+            <li class="aoMail"><div class="alIcons mailIcon"></div>邮件</li>
+            <li class="aoMobile selectedOption"><div class="alIcons mobileIcon"></div>移动端</li>
+        </ul>
+    </div>
+
+    <div ng-view></div>
+</div>
+</body>
+
+<script>
+
+    FileLoader.addTag('script', {src: 'content.min.js'}, true);
+
+</script>
+</html>
