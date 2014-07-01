@@ -1,0 +1,18 @@
+<div class="rcBottomBlock rcBottomMiddle" ng-controller="MobileComPreviewCtrl">
+    <div class="mobile">
+        <div class="preview-title" ng-bind="$parent.content.title"></div><div class="phr"></div>
+        <div class="mListWrapper">
+            <ul class="mList" ng-model="components" ui-sortable>
+                <li ng-repeat="component in components track by $index" ng-click="componentClick(component,$index)"
+                    ng-class="{'item-state-default':true,'item-state-selected':selectedId==component.id}" mouse-over-leave>
+                    <ng-include src="initComponent(component.name, 'client')"></ng-include>
+                </li>
+                <li class="unSortable" ng-show="components&&!components.length"><img ng-src="{{fileRoot}}images/defaultMobilePreviewBg.png" /> </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".mListWrapper").niceScroll();
+</script>

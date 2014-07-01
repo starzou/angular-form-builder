@@ -1,0 +1,71 @@
+<!--
+ Created by kui.liu on 2014/06/11 13:04.
+-->
+<div ng-switch on="component.type" ng-controller="CouponPreviewCtrl">
+    <!--列表式-->
+    <div ng-switch-default>
+        <ul>
+            <li class="coupon" ng-repeat="coupon in component.values track by $index" ng-class="{'mt-10':!$first}">
+                <div ng-class="'couponWrapper '+getCouponColor(coupon.discountAmount)">
+                    <img ng-if="coupon.image" ng-src="{{coupon.image}}" class="listCouponImage">
+                    <div class="tips">
+                        <span class="tipOne" ng-bind="coupon.displayName"></span><br><span class="tipTow" ng-style="{'-webkit-transform-origin-x': coupon.image&&'30%'}" ng-bind-template="有效期：{{coupon.expire}}"></span>
+                    </div>
+                    <div class="couponSplitter"></div>
+                    <div class="denomination">
+                        <span class="currencySign">￥</span>{{coupon.discountAmount}}<span class="couponTerm" ng-bind-template="满{{coupon.condition}}立减"></span>
+                    </div>
+                </div>
+                <div class="getCoupon"><a>立即领取 &gt;</a></div>
+            </li>
+        </ul>
+
+        <div>
+            <div ng-show="!component.values.length" class="couponDragArea">
+                <img ng-src="{{fileRoot}}images/couponIcon.png" />
+                <span>点击添加优惠券</span>
+            </div>
+        </div>
+    </div>
+
+    <!--滑动式-->
+    <div ng-switch-when="carousel" ng-init="componentIndex=$index">
+        <div class="coupon" style="margin: 0px;">
+            <div id="carousel-example-captions-{{componentIndex}}" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li ng-repeat="coupon in component.values track by $index" ng-class="$first&&'active'" data-target="#carousel-example-captions-{{componentIndex}}" data-slide-to="{{$index}}" ></li>
+                </ol>
+
+                <div class="carousel-inner">
+                    <div ng-class="'item '+($first&&'active')" ng-repeat="coupon in component.values track by $index">
+                        <div ng-class="(!coupon.image?'cCoupon tc ':'cCoupon ')+getCouponColor(coupon.discountAmount)">
+                            <h4><span ng-bind="coupon.displayName"></span></h4>
+                            <div class="couponSplitter"></div>
+                            <div>
+                                <img ng-if="coupon.image" ng-src="{{coupon.image}}" class="carouselCouponImage">
+                            </div>
+                            <div class="ccRightWrapper clearFix">
+                                <span class="currencySign">￥</span>
+                                <span class="mNumber" ng-bind="coupon.discountAmount"></span>
+                                <span class="cCouponTerm" ng-bind-template=" 满{{coupon.condition}}立减"></span><br>
+                                <span class="timeLimit" ng-bind-template="使用期限：{{coupon.expire}}"></span>
+                            </div>
+                        </div>
+                        <div class="getCouponLink">
+                            <a href="javascript:void(0);">立即领取 &gt;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <div ng-show="!component.values.length" class="couponDragArea cdaSlider">
+                <img ng-src="{{fileRoot}}images/couponIcon.png" />
+                <span>点击添加优惠券</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div name="close" ng-click="componentRemove($index)"></div>

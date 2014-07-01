@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="produce">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>移动端预览</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <script>
+        //  设置资源文件目录，必需!!
+        window.ResourceDir = "/src/";
+    </script>
+    <script src="js/file-loader.js"></script>
+
+    <base href="/channel-content/src/">
+
+</head>
+<body class="ng-cloak" ng-controller="ProduceCtrl">
+
+    <div class="mainContain">
+        <ul>
+            <li ng-repeat="component in components track by $index">
+                <ng-include src="initComponent(component.name, 'mobile')"></ng-include>
+            </li>
+        </ul>
+    </div>
+
+</body>
+<script>
+
+    FileLoader.addTag('script', {src: 'lib/jquery/jquery-1.11.1.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/angular/angular.min.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/angular/angular-resource.min.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/bootstrap/bootstrap.min.js'}, true);
+    FileLoader.addTag('script', {src: 'lib/touch-0.2.13.min.js'}, true);
+    FileLoader.addTag('script', {src: 'locale_zh-cn.js'}, true);
+    FileLoader.addTag('script', {src: 'directives.js'}, true);
+    FileLoader.addTag('script', {src: 'services.js'}, true);
+    FileLoader.addTag('script', {src: 'components.js'}, true);
+    FileLoader.addTag('script', {src: 'utils.js'}, true);
+    FileLoader.addTag('script', {src: 'produce.js'}, true);
+
+</script>
+</html>
