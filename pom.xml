@@ -8,7 +8,7 @@
 	</parent>
 
 	<groupId>com.huaat.channel</groupId>
-	<artifactId>channel-content</artifactId>
+	<artifactId>form-builder</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
 
